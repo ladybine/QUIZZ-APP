@@ -310,3 +310,8 @@ input[type=radio]:checked~label {
        margin-left: 170px;
     }
 }
+@media screen and(max-heigth:1024px) and (min-heigth:270px) {
+    .contenair{
+        overflow-y: auto;
+    }
+}
