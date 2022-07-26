@@ -16,16 +16,19 @@
         <p class="text-un">Évaluez vos connaissances en JavaScript en répondant aux questions que nous avons spécialement sélectionnées pour vous.
            <br> C'est fun et c'est gratuit. </p>
            <div class="information">
-            <label for="nom">Nom</label><br>
-            <input type="text" id="nom" name="nom" placeholder="joseph">
-            <span id="erreur"></span></p>
-            
-            <div class="email">
-            <label for="email">Email</label><br>
-            <input type="text" id="email" name="email" placeholder="joseph@kinshasadigital.com">
-            <span id="error"></span></p>
-             </div>
-                 <div >
+               <div id="groupeNom">
+                <label for="nom">Nom</label><br>
+                <input type="text" id="nom" name="nom" placeholder="joseph">
+                <span id="erreur"></span>
+                </div>
+               
+                 <div class="email">
+                <label for="email">Email</label><br>
+                <input type="text" id="email" name="email" placeholder="joseph@kinshasadigital.com">
+                <span id="error"></span></p>
+                 </div>
+           
+                 <div class="boutonUn">
                  <button class="bouton" >commencer</button>
                 </div>
           </div>
@@ -33,7 +36,7 @@
         </div>
 
             <form action="" id="question-container" class="question-container">
-                <p class="question-un"></p>
+                <p class="question-un"><!-- ici sera inser les questions --></p>
                 <div class="compte">
                     <p class="progressquestion"></p>
                     <span id="time"></span>
@@ -51,7 +54,7 @@
        
              <div class="bouton-deux">
                  <button class="quitter">Quitter</button>
-                 <button class="suivant">Suivant</button>
+                 <button class="suivant" disabled >Suivant</button>
        
              </div>
        
