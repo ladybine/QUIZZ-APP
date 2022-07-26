@@ -80,10 +80,57 @@ function affichQuestion(indexQuestion){
                  <button class="suivant" >Suivant</button>
     </div>`
 
-    
+    let btnSuivant = document.querySelector(".suivant");
+    const suivantQuestion = () => {
+        if(indexQuestion < questions.length-1 ){
+            indexQuestion++;
+            affichQuestion(indexQuestion);   
+        }
+      
+       
+       
+        
+    }
+
+    btnSuivant.addEventListener('click', (e)=>{
+        e.preventDefault();
+        suivantQuestion();
+        if(indexQuestion === questions.length-1){
+            btnSuivant.textContent ="Terminer";  
+        }
+        
+       
+    }) 
     
 }
-console.log(questions[2].options[2]);
+let resultat = document.querySelector(".result");
+let nomRecup = document.querySelector(".nomrecup");
+let emailRecup = document.querySelector(".email");
+let icons = document.querySelector(".icons");
+let btnAccueil = document.querySelector(".acceuil");
+let resultatChiffre = document.querySelector(".resultat");
+
+function recupereResultat(){
+    nom.value = nomRecup;
+}
+function affichResultat(){
+    resultat.innerHTML =` <div class="nomrecup">
+    <p>${nomRecup} </p>
+</div>
+<div class="emailrecup">
+    <p> ${emailRecup}</p>
+</div>
+
+<div class="icons">
+   ${icons}
+</div>
+
+<div class="resultat">
+    <p> ${resultat}</p>
+</div>
+<button class="accueil">Accueil</button>`
+}
+
 
 const answers = document.querySelectorAll("input[name='drone']");
 
@@ -152,18 +199,4 @@ btncommencer.addEventListener('click', (e)=>{
         affichQuestion(0);  }   
 });
 
-let btnSuivant = document.querySelector(".suivant");
-const suivantQuestion = () => {
-    if(indexQuestion < questions.length-1){
-        indexQuestion++;
-        affichQuestion(indexQuestion);
-    }
-    
-}
-btnSuivant.addEventListener('click', (e)=>{
-    e.preventDefault();
-    suivantQuestion();
-    affichQuestion(indexQuestion);
-    questionContainer.style.display="block";
 
-})

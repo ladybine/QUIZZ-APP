@@ -1,36 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
+html{
+    height: 100%;
+}
 
 body{
+    font-family: 'Inter', 'sans-serif';
     box-sizing: border-box;
     background:linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
     background-blend-mode: darken;
-    ;
+    height: 100%;
+    
 }
-
+.arriere-plan-un{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 .contenair{
     background-color: white;
     border:solid 2px white;
-    width: 30%;
-    height: 550px;
-    margin: auto;
-    margin-top: 35px;
-    
+    width: 571px;
+    height: 784px;
+    left: 578px;
+    top: 166px;
 }
 h1{
-    margin-top: 50px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    margin-top: 88px;
+    color: #555555;
     text-align: center;
 }
 .text-un{
     margin: 50px;
     text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: #555555;
 }
 
 .information{
     margin: 20px;
+    width: 80%;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+}
+#groupeNom{
+    height: 50px;
+    font-Weight:400;
+    font-Size:16px;
+    Line-height:19.36px;
+    color: #555555;
 }
 input{
     padding-left: 8px;
     width: 100%;
-    height: 30px;
+    height: 40px;
     margin-top:10px;
 }
 input:focus{
@@ -38,58 +67,88 @@ input:focus{
 }
 #erreur{
     font-size: 10px;
+    height: 10px;
+    
 }
 #error{
     font-size: 10px;
 }
 .email{
-    margin-top: 40px;
+    font-Weight:400;
+    font-Size:16px;
+    Line-height:19.36px;
+    margin-top: 60px;
+    color: #555555;
+}
+.boutonUn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 .bouton{
     background-color:green ;
     color: rgb(240, 245, 241);
     padding: 10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     cursor:pointer;
     border: none;
-    margin-left: 130px;
-    margin-top: 40px;
-    width: 40%;
+    font-Weight:500;
+    Line-height:24.2px;
+    width:  226px;
+    height: 59px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     
 }
 
 
 
 .question-container{
-   display: none;  
+   display: none; 
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; 
     
 }
 
 .question-un{
-    margin-top: 60px;
+    padding-top: 80px;
     text-align: center;
+    align-items: center;
+    height: 33px;
+    width: 491px;
+    font-weight: 400px;
+    Line-height:31.5px;
+    color: #555555;
+    align-content: center;
+    align-items: center;
+    margin: auto;
 }
 .compte{
    display: flex;
-   
    justify-content: space-between;
-   text-align: justify;
+   text-align: center;
+   Width:100%;
+    font-weight: 400;
+    color:#555555;
+
+
 }
 .progressquestion{
-    margin-left: 40px;
+    margin-left: 35px;
     margin-top: 40px;
 }
 #time{
-    margin-left: 40px;
+    
     margin-top: 40px;
-    margin-right: 100px;
+    padding-right: 90px;
+
     
 }
 
 .barre{
-    margin-left: 35px;
-    width: 75%;
+    margin-left: 40px;
+    width: 80%;
     height: 10px;
     border-radius:20px ;
     background: gray;
@@ -123,24 +182,27 @@ input:focus{
 .option-contenair{
     
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 .reponse{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    margin-bottom: 50px;
 }
 
-
+.reponse .choix label{
+    padding-left: 10px;
+}
  .reponse .choix{
-    width: 100%;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-     border: solid 1px grey;  
-     margin-bottom: 15px;
-    margin-left: 30px; 
-   
+     display: flex;
+     flex-direction: row;
+     text-align: center;
+     align-items: center;
+     align-self: center;
+     align-content: center;
+     border: solid 1px grey; 
+     color: #555555; 
+     margin: auto;
+    Width:491px;
+    Height:59px;
  }
 .reponse .choix input{
     width: 20px;
@@ -161,10 +223,8 @@ input:focus{
   
 input[type=radio]:checked~label {
     border: 3px solid #028A3D;
-    height: 38px;
     border-radius: 0px;
     box-sizing: content-box;
-    width: 100%;
     padding-left: 30px;
     padding-top: -2px;
     margin-left: -30px;
@@ -172,30 +232,41 @@ input[type=radio]:checked~label {
     margin-bottom: px;
     display: flex;
     align-items: center;
+    Width:491px;
+    Height:59px;
   }
 
 .reponse .choix{
-    width: 80%;
+    width: 90%;
+    margin-bottom: 20px;
     
 }
 
 .bouton-deux{
     display: flex;
-    margin-left: 40px;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
+    
 }
 .quitter{
-    background-color:rgb(238, 131, 88) ;
+    background-color:#EC880C ;
+    Width:226px;
+    Height:59px;
     color: rgb(240, 245, 241);
     padding: 10px;
     text-align: center;
     font-size: 15px;
     cursor:pointer;
     border: none;
-    width: 40%;
+    margin-top: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+   
 }
 .suivant{
-    background-color:green ;
+    background: rgba(2, 138, 61, 0.42);
+    Width:226px;
+    Height:59px;
     color: rgb(240, 245, 241);
     padding: 10px;
     text-align: center;
@@ -203,8 +274,8 @@ input[type=radio]:checked~label {
     cursor:pointer;
     border: none;
     margin-left: 10px;
-    margin-top: px;
-    width: 40%;
+    margin-top: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 
@@ -212,105 +283,96 @@ input[type=radio]:checked~label {
    display: none; 
 }
 .nomrecup{
+    display: flex;
+    justify-content: center;
     margin-top: 60px;
     text-align: center;
-    font-size: 30px;
+font-style: normal;
+font-weight: 500;
+font-size: 40px;
+line-height: 48px;
+color: #555555;
 }
 .emailrecup{
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
     text-align: center;
+    font-weight: 500px;
+    Line-height:24.2px;
+    color:  #555555;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
 }
 .fa-regular{
  font-size: 200px;
  color: green;
- margin-left: 25%;
- margin-top: 40px;
 }
 .fa-circle-xmark{
     font-size: px;
  color: rgb(233, 42, 9);
- margin-left: 25%;
- margin-top: px;
 }
 .resultat{
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
     text-align: center;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+color: #555555;
 }
 .accueil{
-    background-color:rgb(6, 109, 220) ;
+    background: #0880D6; 
+    Width:226px;
+    Height:59px;
     color: rgb(243, 245, 247);
     padding: 10px;
     text-align: center;
-    font-size: 15px;
     cursor:pointer;
     border: none;
     margin-left: 30%;
     margin-top: 30px;
     width: 40%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
 }
-@media screen and (max-width: 1024px) and (min-width: 978px) {
-    .contenair {
-        width: 60%;
-    }
-    .information{
-        width: 80%;
-    }
-    .fa-regular {
-        margin-left: 35%;
-    } 
-        .fa-circle-xmark{
-            margin-left: 35%;
-        }
 
-}
-@media screen and (max-width: 978px) and (min-width: 769px){
+@media screen and (max-width: 999px) and (min-width:500px){
     .contenair{
         width: 80%;
     }
-    .information{
-        width: 80%;
-    }
-    .fa-regular{
-        font-size: 200px;
-        color: green;
-        margin-left: 35%;
-        margin-top: 40px;
-       }
-       .fa-circle-xmark{
-           font-size: px;
-        color: rgb(233, 42, 9);
-        margin-left: 35%;
-        margin-top: px;
-       }
-       .bouton{margin-left: 200px;}
+
+    .question-un{
+        width: 100%;
+    }   
 }
-@media screen and (max-width: 768px){
+@media screen and(max-width:499px) and (min-width:390px) {
     .contenair{
+        width: 70%;
+        height: 900px;
+    }
+    .question-un{
         width: 100%;
     }
-    .fa-regular{
-        font-size: 150px;
-        color: green;
-        margin-left: 40%;
-        margin-top: 40px;
-       }
-       .fa-circle-xmark{
-           font-size: px;
-        color: rgb(233, 42, 9);
-        margin-left: 40%;
-        margin-top: px;
-       }
-       .bouton{
-           margin-left: 150px;
-       }
+    
 }
-@media screen and (max-width: 768px) and (min-width: 270px){
-    .bouton{
-       align-self: center;
-       margin-left: 170px;
+@media screen and(max-width:360) and (min-width:100px) {
+    .contenair{
+        width: 30%;
+        height: 950px;
+    }
+    .question-un{
+        width: 30%;
     }
 }
-@media screen and(max-heigth:1024px) and (min-heigth:270px) {
+@media screen and(max-heigth:1150px) and (min-heigth:270px) {
     .contenair{
         overflow-y: auto;
     }
