@@ -19,18 +19,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
   height: 100%;
 }
 .contenair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border: solid 2px white;
   width: 571px;
   height: 550px;
-  margin-top: auto;
-  margin-bottom: 20px;
-
+  /* 
   left: 578px;
-  top: 166px;
+  top: 166px; */
 }
 h1 {
   font-weight: 500;
