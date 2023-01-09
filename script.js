@@ -1,39 +1,40 @@
-let nom =   document.getElementById("nom");
+let nameInput =   document.getElementById("name");
 let email = document.getElementById("email");
-let erreur = document.getElementById("erreur"); 
-let resultat = document.querySelector(".resultat");
+let message = document.getElementById("ErrorMessageName"); 
+let scorFinal = document.querySelector(".scorFinal");
 
-let btnSuivant = document.querySelector(".suivant");
-btnSuivant.disabled = true;
+let btnNext = document.querySelector(".next");
+btnNext.disabled = true;
 
 let indexQuestion=0;
 let scroreJoueur=0;
 let compteur = 59;
 
 function validate(){
-    const nomvalue = nom.value;
+    const nameInputvalue = nameInput.value;
   
 
-    if (nomvalue ==="" || nomvalue.length<2){ 
+    if (nameInputvalue ==="" || nameInputvalue.length<2){ 
        
-             if (nomvalue === ""){
-                 erreur.innerHTML ="N’oubliez pas de renseigner votre nom avant de commencer le Quiz."
-                 nom.focus();    
+             if (nameInputvalue === ""){
+                 message.innerHTML ="N’oubliez pas de renseigner votre nom avant de commencer le Quiz."
+                 nameInput.focus();    
             } else{
-              erreur.innerHTML = "veiller renseigner au moin deux charactère";
+              message.innerHTML = "veiller renseigner au moin deux charactère";
               }
-              erreur.style.color="red";
-              nom.style.border=" 1px solid red";
+
+              nameInput.classList.add("error");
    
                 }else{
                    
-                    nom.style.border="1px solid black"
-                    erreur.innerHTML="";
+                   /*  nameInput.style.border="1px solid black" */
+                   nameInput.classList.remove("error")
+                    message.innerHTML="";
                     }
                    
 }
     
-let motifEmail = /^[a-z0-9._\-]+@[a-z0-9._\-]{2,}\.[a-z]{2,4}$/;
+let motifEmail = /^[a-z0-9._\-]+@[a-z0-9._\-]{2,}\.[a-z]{2,4}$/i;
 function validateEmail(){
    
    const emailvalue = email.value;
@@ -42,20 +43,22 @@ function validateEmail(){
 if (emailvalue ===""|| !motifEmail.test(emailvalue)){ 
    
     if (emailvalue === ""){
-        error.innerHTML ="N’oubliez pas de renseigner votre email avant de commencer le Quiz"
+        ErrorMessageEmail.innerHTML ="N’oubliez pas de renseigner votre email avant de commencer le Quiz"
        
     }
     else{
-        error.innerHTML="veiller renseigner un email valide"
+        ErrorMessageEmail.innerHTML="veiller renseigner un email valide"
     }
-    error.style.color= "red";
-    email.style.border=" 1px solid red";
+    /* ErrorMessageEmail.style.color= "red";
+    email.style.border=" 1px solid red"; */
+    email.classList.add("error");
 }
    
 
 else{
-    email.style.border="1px solid black"
-    error.innerHTML = "";
+   /*  email.style.border="1px solid black" */
+   ErrorMessageEmail.classList.remove("error");
+    ErrorMessageEmail.innerHTML = "";
    
 }
 //return isValid;
@@ -63,140 +66,145 @@ else{
 } 
                           
 
-let contenairePage = document.querySelector(".contenairUn");
-let btncommencer = document.querySelector(".bouton");
-let questionContainer = document.getElementById("question-container");
+let contenairPage = document.querySelector(".contenairPage");
+let btnStart = document.querySelector(".btnStart");
+let quizPage = document.getElementById("quizPage");
 
-btncommencer.addEventListener('click', (e)=>{
+btnStart.addEventListener('click', (e)=>{
     e.preventDefault();
-    const nomvalue = nom.value;
+    const nameInputvalue = nameInput.value;
     const emailvalue = email.value;
    // const isValid = validate() && validateEmail();
-    if (nomvalue && nomvalue.length>=2 && emailvalue && motifEmail.test(emailvalue)){
+    if (nameInputvalue && nameInputvalue.length>=2 && emailvalue && motifEmail.test(emailvalue)){
         //logique
-        contenairePage.style.display = "none";
-        questionContainer.style.display="block";
-        affichQuestion();
-        afficheReponse();
+        contenairPage.style.display = "none";
+        quizPage.style.display="block";
+       showQuestions();
+       showAnswers();
     } else{
         validate();
         validateEmail();
     }
 })
 const questions=["Quel est le type d'un fichier JavaScript?", "Comment faire un commentaire sur une ligne avec javaScript?", "Dans quel élément HTML place-t-on le JavaScript ?",
-"window.confirm() affiche une boite de dialogue avec", "Une variable locale déclarée dans une fonction peut être utilisée ", "Qu'affiche String.fromCharCode(65) ?","Quel langage se prête le mieux à l'exécution d'une requête MySQL ?",
-"Comment trouver la longueur de la variable Nom ?","La fonction javascript_info()","i += 1 est équivalent à","Le DOM","JavaScript ","Quelle fonction permet de temporiser l'exécution d'une commande ?",
+"Laquelle de ces syntaxes est correcte ?", "Comment faire appelle à une fonction nommée « sum »? ", "Qu'affiche String.fromCharCode(65) ?","Quel langage se prête le mieux à l'exécution d'une requête MySQL ?",
+"Comment trouver la longueur de la variable nom ?","La fonction javascript_info()","i += 1 est équivalent à","Comment écrivez-vous « Hello World » dans une boîte d’alerte?","JavaScript ","Quelle fonction permet de temporiser l'exécution d'une commande ?",
 "Comment supprimer les espaces en début et fin de la chaîne ch1 ?","Comment accéder au premier élément d'un tableau T1 ?",
 ];
 
-const reponse=[[".ts",".jsx",".js",".j",], [" || ","/**/","\\\\","//",], ["<js>", "<javaScript>", "<script>", "<scripting>",],["un message, un champ de saisie et les boutons OK Annuler", "un message et le bouton OK seul","un message et les boutons OK Annuler","n'existe pas en JavaScript",], 
-["dans toutes les fonctions mais pas dans le script appelant", "dans toutes les fonctions du document HTML", "dans cette fonction uniquement", "dans cette fonction et dans le script appelant",],
-["A", "une erreur", "true", "1",],["JavaScript", "CSS", "HTML", "PHP",],["Nom.width","width(Nom)","Nom.length","length(Nom)",],["n'existe pas", "renvoie la version de JavaScript utilisée","permet de déboguer une variable","permet de connaître l'OS de l'utilisateur",],
-["i > 1","i >= 1","n'existe pas en JavaScript","i = i + 1",],["est spécifique a JavaScript","est un moteur de bases de données","ne peut pas être manipulé par JavaScript","décrit la structure du document HTML ou XML",],["s'exécute sur le serveur uniquement","doit être compilé avant d'être exécuté","s'exécute sur le client","est un langage dérivé de l'ADA",],
+const allAnswers=[[".ts",".jsx",".js",".j",], [" || ","/**/","\\\\","//",], ["<js>", "<javaScript>", "<script>", "<scripting>",],["if (a != 2) {}", "if a != 2 {}","if (a <> 2) {}"," if a <> 2 {}",], 
+["sum()", "call function sum()", " call sum()", "Aucune de ces réponses n’est vraie.",],
+["A", "une message", "true", "1",],["JavaScript", "CSS", "HTML", "PHP",],["nom.width","width(nom)","nom.length","length(nom)",],["n'existe pas", "renvoie la version de JavaScript utilisée","permet de déboguer une variable","permet de connaître l'OS de l'utilisateur",],
+["i > 1","i >= 1","n'existe pas en JavaScript","i = i + 1",],["msg('Hello World');","alert('Hello World');","msgBox('Hello World');","alertBox('Hello World');",],["s'exécute sur le serveur uniquement","doit être compilé avant d'être exécuté","s'exécute sur le client","est un langage dérivé de l'ADA",],
 ["sleep()","setTimeout()","wait()","SetTimer()",],["supprespaces(ch1)", "ch1.trim()","trim(ch1)","ch1.supprespaces()",],
 ["T1(0)","T1(1)","T1[0]","T1[1]",]];
 
-const correct =[".js","//", "<script>","un message et les boutons OK Annuler","dans cette fonction uniquement", "A","PHP","Nom.length","n'existe pas","i = i + 1","décrit la structure du document HTML ou XML","s'exécute sur le client",
+const correct =[".js","//", "<script>","if (a != 2) {}","sum()", "A","PHP","nom.length","n'existe pas","i = i + 1","alert('Hello World')","s'exécute sur le client",
 "setTimeout()","ch1.trim()","T1[0]",];
 
 
 
 
-let questionUn = document.querySelector(".question-un");
-let progressquestion = document.querySelector(".progressquestion");
+let quiz = document.querySelector(".quiz");
+let questionCounter = document.querySelector(".questionCounter");
 
-function affichQuestion(){
+function showQuestions(){
 
     progress_timer()
 
     if (questions.length === indexQuestion){
-        showScore(nom, email)
+        showScore(nameInput, email)
     }else{
-        questionUn.textContent = questions[indexQuestion];
-        progressquestion.textContent= `Question ${indexQuestion+1}/${questions.length}`
+        quiz.textContent = questions[indexQuestion];
+        questionCounter.textContent= `Question ${indexQuestion+1}/${questions.length}`
     }   
 }
 
 
-let reponseClasse = document.querySelector(".reponse");
-function afficheReponse(){
-    reponse[indexQuestion].forEach( function(sousReponse, index) {
+let answersClass = document.querySelector(".Answers");
+function showAnswers(){
+    allAnswers[indexQuestion].forEach( function(underAnswers, index) {
         let radioInput = document.createElement("input");
         radioInput.setAttribute("type", "radio");
         radioInput.setAttribute("name", "drone");
         radioInput.setAttribute("id","drone"+index)
-        let div = document.createElement("div");
-        div.classList.add("choix");
-        div.addEventListener('click',()=>{
+        let divBlockInput = document.createElement("div");
+        divBlockInput.classList.add("choice");
+        divBlockInput.addEventListener('click',()=>{
             radioInput.click();
-            btnSuivant.disabled = false;
-            btnSuivant.style.backgroundColor = "green";
+            btnNext.disabled = false;
+            btnNext.style.backgroundColor = "green";
         })
         let label = document.createElement("label");
         label.setAttribute("for","drone"+index);
         label.setAttribute("class","label");
-        label.textContent = sousReponse;
-        radioInput.setAttribute("value",sousReponse);
+        label.textContent = underAnswers;
+        radioInput.setAttribute("value",underAnswers);
 
-        div.appendChild(radioInput);
-        div.appendChild(label);
-        reponseClasse.appendChild(div);
+        divBlockInput.appendChild(radioInput);
+        divBlockInput.appendChild(label);
+        answersClass.appendChild(divBlockInput);
     });
 }
 
 
 
 
-let btnQuitter = document.querySelector(".quitter");
+let btnLeave = document.querySelector(".leave");
 
-function butnSuivant(){
+function buttonNext(){
  indexQuestion++;
  
- if (indexQuestion<reponse.length) {
-    affichQuestion();
-    reponse[indexQuestion].forEach( function(){
+ if (indexQuestion<allAnswers.length) {
+   showQuestions();
+    allAnswers[indexQuestion].forEach( function(){
         radioInput = document.querySelectorAll("[type='radio']");
         label = document.querySelectorAll(".label");
         for(let i = 0; i<label.length; i++){
-            label[i].textContent = reponse[indexQuestion][i];
-            radioInput[i].setAttribute("value",reponse[indexQuestion][i]);
-            
+            label[i].textContent = allAnswers[indexQuestion][i];
+            radioInput[i].setAttribute("value",allAnswers[indexQuestion][i]);
+           /*  btnNext.disabled;
+            btnNext.style.backgroundColor = "green"; */
         }
     }); 
-    if(indexQuestion == reponse.length-1){
-        btnSuivant.textContent = "Terminer";
+    if(indexQuestion == allAnswers.length-1){
+        btnNext.textContent = "Terminer";
     } 
  } else {
-    showScore(nom, email);
+    showScore(nameInput, email);
  }  
 }
 
-btnSuivant.addEventListener('click',(e)=>{
+btnNext.addEventListener('click',(e)=>{
     e.preventDefault();
+    if(btnNext.disabled === true){
+        return;
+    }
+    btnNext.disabled = true
     clear_interval();
-    showResultat();
-    btnSuivant.style.backgroundColor = "rgba(91, 170, 125, 0.42)";
+    showscorFinal();
+    btnNext.style.backgroundColor = "rgba(91, 170, 125, 0.42)";
    
-    butnSuivant();
-    questionContainer.reset();
+    buttonNext();
+    quizPage.reset();
 
 })
 
-let nomRecup = document.querySelector(".nomrecup");
-let emailRecup = document.querySelector(".emailrecup");
-let result = document.querySelector(".result");
+let nameRecov = document.querySelector(".nameRecov");
+let emailRecov = document.querySelector(".emailRecov");
+let bilan = document.querySelector(".bilan");
 let ok = document.querySelector(".icons");
 
 
-//affiche le nom à la fin
-function showScore(nom, email){
-    nomRecup.textContent = nom.value;
-    emailRecup.textContent = email.value;
-    questionContainer.style.display="none";
-    result.style.display="block";
-    resultat.textContent = `${scroreJoueur}/${questions.length}`;
+//affiche le nameInput à la fin
+function showScore(nameInput, email){
+    nameRecov.textContent = nameInput.value;
+    emailRecov.textContent = email.value;
+    quizPage.style.display="none";
+    bilan.style.display="block";
+    scorFinal.textContent = `${scroreJoueur}/${questions.length}`;
     
-    if (scroreJoueur >= reponse.length/2) {
+    if (scroreJoueur >= allAnswers.length/2) {
         ok.innerHTML = `<i class="fa-regular fa-circle-check check"></i>`
         
     } else {
@@ -205,16 +213,17 @@ function showScore(nom, email){
     }
 }
 
-btnQuitter.addEventListener('click',(e)=>{
+btnLeave.addEventListener('click',(e)=>{
     e.preventDefault();
-    showScore(nom, email);
+    showscorFinal();
+    showScore(nameInput, email);
 })
 
 
 
 
-//affiche resultat
-function showResultat(){
+//affiche scorFinal
+function showscorFinal(){
     let check = document.querySelector("input[name='drone']:checked")
     if (check) {
         if(check.value == correct[indexQuestion] ){
@@ -230,22 +239,22 @@ function showResultat(){
 
 
     function progress_timer(){
-        document.querySelector(".bar").setAttribute("style", "width:100%");
+        document.querySelector(".progressBar").setAttribute("style", "width:100%");
         let timeleft = 60;
         let timetotal = 60;
-        document.getElementById("time").innerText = timeleft;
+        document.getElementById("timeCounter").innerText = timeleft;
         let interv = setInterval(()=>{
             let progress_width = Math.ceil((timeleft * 100) / timetotal);
-            document.querySelector(".bar").setAttribute("style", `width:${progress_width}%`);
-            document.getElementById("time").innerText = timeleft;
+            document.querySelector(".progressBar").setAttribute("style", `width:${progress_width}%`);
+            document.getElementById("timeCounter").innerText = timeleft;
             if (timeleft === 0) {
-                
+                showscorFinal();
                 clearInterval(interv);
-                questionContainer.reset();
-                butnSuivant();
-                btnSuivant.disabled = false;
-                btnSuivant.style.backgroundColor = "rgba(91, 170, 125, 0.42)";
-                document.getElementById("time").innerText = ""
+                quizPage.reset();
+                buttonNext();
+                btnNext.disabled = false;
+                btnNext.style.backgroundColor = "rgba(91, 170, 125, 0.42)";
+                document.getElementById("timeCounter").innerText = ""
             }
             timeleft--;
     },1000)
@@ -261,8 +270,8 @@ function clear_interval() {
 
         
 
-let btnAccueil = document.querySelector(".accueil");
-btnAccueil.addEventListener("click", (e)=>{
+let btnhome = document.querySelector(".home");
+btnhome.addEventListener("click", (e)=>{
     e.preventDefault();
 
     document.location.reload();
